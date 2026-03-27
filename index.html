@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advanced Portfolio</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background: #020617;
+  padding: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: cyan;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+/* SECTIONS */
+section {
+  padding: 40px;
+  text-align: center;
+}
+
+/* CARDS */
+.card {
+  border: 1px solid #1e293b;
+  padding: 20px;
+  margin: 10px;
+  display: inline-block;
+  width: 220px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background: #1e293b;
+}
+
+/* TODO APP */
+.todo-box {
+  margin-top: 20px;
+}
+
+input {
+  padding: 10px;
+  width: 200px;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+li {
+  list-style: none;
+  margin: 10px;
+  cursor: pointer;
+}
+
+/* GALLERY */
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  width: 150px;
+  transition: 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.2);
+}
+
+/* FOOTER */
+footer {
+  background: #020617;
+  text-align: center;
+  padding: 20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#projects">Projects</a>
+  <a href="#todo">Todo App</a>
+  <a href="#gallery">Gallery</a>
+</nav>
+
+<div class="hero">
+  <h1 id="typing"></h1>
+  <p>I build interactive web projects</p>
+</div>
+
+<section>
+  <h2>About Me</h2>
+  <p>I am learning web development and building real projects.</p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="card">
+    <h3>Portfolio</h3>
+    <p>This website</p>
+  </div>
+
+  <div class="card">
+    <h3>Todo App</h3>
+    <p>Interactive task manager</p>
+  </div>
+</section>
+
+<section id="todo">
+  <h2>Live Todo App</h2>
+
+  <div class="todo-box">
+    <input id="task" placeholder="Enter task">
+    <button onclick="addTask()">Add</button>
+    <button onclick="clearAll()">Clear All</button>
+
+    <ul id="list"></ul>
+  </div>
+</section>
+
+<section id="gallery">
+  <h2>Gallery</h2>
+
+  <div class="gallery">
+    <img src="https://via.placeholder.com/150">
+    <img src="https://via.placeholder.com/150">
+    <img src="https://via.placeholder.com/150">
+    <img src="https://via.placeholder.com/150">
+  </div>
+</section>
+
+<footer>
+  <p>Contact: myemail@example.com</p>
+</footer>
+
+<script>
+// Typing effect
+const text = "Hi, I'm a Developer";
+let i = 0;
+
+function typing() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 80);
+  }
+}
+typing();
+
+// TODO APP
+function addTask() {
+  const input = document.getElementById("task");
+
+  if (input.value === "") return;
+
+  const li = document.createElement("li");
+  li.textContent = input.value;
+
+  li.onclick = function () {
+    li.style.textDecoration = "line-through";
+  };
+
+  document.getElementById("list").appendChild(li);
+  input.value = "";
+}
+
+function clearAll() {
+  document.getElementById("list").innerHTML = "";
+}
+</script>
+
+</body>
+</html>
